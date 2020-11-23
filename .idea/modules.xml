@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/octopus.iml" filepath="$PROJECT_DIR$/.idea/octopus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/octopus-framework/octopus-framework.iml" filepath="$PROJECT_DIR$/octopus-framework/octopus-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
     </modules>
   </component>
 </project>
