@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="octopus-framework" target="1.5" />
+      <module name="octopus-framework" target="7" />
       <module name="test" target="1.5" />
     </bytecodeTargetLevel>
   </component>

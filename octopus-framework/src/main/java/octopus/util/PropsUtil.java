@@ -1,4 +1,4 @@
-package util;
+package octopus.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +10,7 @@ import java.util.Properties;
 
 public class PropsUtil {
 
+
     private static final Logger LOGGER = LoggerFactory.getLogger(PropsUtil.class);
 
 
@@ -20,6 +21,8 @@ public class PropsUtil {
      * @return
      */
     public static Properties loadProps(String fileName) {
+
+
         Properties properties = null;
         InputStream inputStream = null;
         try {
@@ -70,5 +73,47 @@ public class PropsUtil {
         }
         return value;
     }
+
+    /**
+     * 获取数值型属性（默认值为0）
+     *
+     * @param props
+     * @param key
+     * @return
+     */
+    public static int getInt(Properties props, String key) {
+        return getInt(props, key, 0);
+    }
+
+
+    /**
+     * 获取数值型属性
+     *
+     * @param props
+     * @param key
+     * @param defaultValue
+     * @return
+     */
+    public static int getInt(Properties props, String key, int defaultValue) {
+        int value = defaultValue;
+        if (props.containsKey(key)) {
+            value = CastUtil.castInt(props.getProperty(key));
+        }
+        return value;
+    }
+
+
+    public static boolean getBoolean(Properties props, String key) {
+        return getBoolean(props, key, false);
+    }
+
+    public static boolean getBoolean(Properties props, String key, boolean defaultValue) {
+        boolean value = defaultValue;
+        if (props.containsKey(key)) {
+            value = CastUtil.castBoolean(props.getProperty(key));
+        }
+        return value;
+    }
+
 
 }
