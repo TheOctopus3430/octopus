@@ -1,9 +1,8 @@
-package octopus.helper;
+package octopus.bean;
 
-import com.sun.org.apache.bcel.internal.util.ClassSet;
 import octopus.annotation.ZController;
 import octopus.annotation.ZService;
-import octopus.helper.ConfigHelper;
+import octopus.config.ConfigHelper;
 import octopus.util.ClassUtil;
 
 import java.util.HashSet;

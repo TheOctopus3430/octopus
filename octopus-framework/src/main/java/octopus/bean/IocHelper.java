@@ -1,13 +1,12 @@
-package octopus.helper;
+package octopus.bean;
 
 import octopus.annotation.ZInject;
+import octopus.bean.BeanHelper;
 import octopus.util.ArrayUtil;
 import octopus.util.ReflectionUtil;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.Map;
-import java.util.logging.FileHandler;
 
 /**
  * 依赖注入辅助类

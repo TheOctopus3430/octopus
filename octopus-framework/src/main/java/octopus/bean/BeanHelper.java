@@ -1,4 +1,4 @@
-package octopus.helper;
+package octopus.bean;
 
 
 import octopus.util.ReflectionUtil;

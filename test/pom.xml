@@ -7,7 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>test</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>war</packaging>
     <dependencies>
         <dependency>
             <groupId>org.example</groupId>
@@ -15,5 +15,7 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+
 
 </project>

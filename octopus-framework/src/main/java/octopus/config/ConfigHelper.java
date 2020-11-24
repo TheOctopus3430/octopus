@@ -1,4 +1,4 @@
-package octopus.helper;
+package octopus.config;
 
 
 import octopus.config.ConfigConstant;
