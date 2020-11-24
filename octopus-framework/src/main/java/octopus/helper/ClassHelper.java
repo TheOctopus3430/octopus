@@ -1,4 +1,4 @@
-package octopus;
+package octopus.helper;
 
 import com.sun.org.apache.bcel.internal.util.ClassSet;
 import octopus.annotation.ZController;
