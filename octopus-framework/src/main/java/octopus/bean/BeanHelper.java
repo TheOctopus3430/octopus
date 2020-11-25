@@ -24,6 +24,15 @@ public class BeanHelper {
         }
     }
 
+
+    /**
+     * 添加Bean到IOC容器中
+     */
+    public static void setBean(Class<?> cls, Object obj) {
+        BEAN_MAP.put(cls, obj);
+    }
+
+
     /**
      * 获取Bean映射
      */
