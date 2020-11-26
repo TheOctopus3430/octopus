@@ -1,5 +1,7 @@
 package octopus.aop;
 
+import octopus.annotation.Transaction;
+import octopus.annotation.ZService;
 import octopus.bean.BeanHelper;
 import octopus.bean.ClassHelper;
 
@@ -7,7 +9,6 @@ import java.lang.annotation.Annotation;
 import java.util.*;
 
 /**
- *
  * @author zhangyu
  */
 public final class AopHelper {
@@ -43,17 +44,20 @@ public final class AopHelper {
 
     private static Map<Class<?>, Set<Class<?>>> createProxyMap() {
         Map<Class<?>, Set<Class<?>>> proxyMap = new HashMap<>(16);
-        //获取IOC容器所有的的代理类
-        Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspectProxy.class);
-        for (Class<?> aClass : proxyClassSet) {
-            if (aClass.isAnnotationPresent(ZAspect.class)) {
-                //获取当前代理对象注解数据
-                ZAspect aspect = aClass.getAnnotation(ZAspect.class);
-                Set<Class<?>> targetClassSet = createTargetClassSet(aspect);
-                proxyMap.put(aClass, targetClassSet);
+        addAspectProxy(proxyMap);
+        addTransactionProxy(proxyMap);
 
-            }
-        }
+//        //获取IOC容器所有的的代理类
+//        Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspectProxy.class);
+//        for (Class<?> aClass : proxyClassSet) {
+//            if (aClass.isAnnotationPresent(ZAspect.class)) {
+//                //获取当前代理对象注解数据
+//                ZAspect aspect = aClass.getAnnotation(ZAspect.class);
+//                Set<Class<?>> targetClassSet = createTargetClassSet(aspect);
+//                proxyMap.put(aClass, targetClassSet);
+//
+//            }
+//        }
         return proxyMap;
     }
 
@@ -78,6 +82,26 @@ public final class AopHelper {
             }
         }
         return targetMap;
+    }
+
+
+    private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap) {
+        Set<Class<?>> classSetBySuper = ClassHelper.getClassSetBySuper(AspectProxy.class);
+        for (Class<?> aClass : classSetBySuper) {
+            if (aClass.isAnnotationPresent(ZAspect.class)) {
+                ZAspect aspect = aClass.getAnnotation(ZAspect.class);
+                Set<Class<?>> targetClassSet = createTargetClassSet(aspect);
+                proxyMap.put(aClass, targetClassSet);
+            }
+        }
+    }
+
+
+    private static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap) {
+        Set<Class<?>> serviceClassSet = ClassHelper.getClassSetByAnnotation(ZService.class);
+        proxyMap.put(Transaction.class, serviceClassSet);
+
+
     }
 
 

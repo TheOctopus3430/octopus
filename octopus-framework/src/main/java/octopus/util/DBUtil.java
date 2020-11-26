@@ -2,6 +2,7 @@ package octopus.util;
 
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class DBUtil {
     //数据库配置
@@ -18,8 +19,17 @@ public class DBUtil {
     public static Connection getConnection() {
         Connection connection = connContainer.get();
 
-
-        return null;
+        try {
+            if (connection == null) {
+                Class.forName(DRIVER);
+                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connContainer.set(connection);
+        }
+        return connection;
     }
 
 
