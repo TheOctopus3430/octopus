@@ -1,6 +1,7 @@
 package octopus.main;
 
 import com.sun.org.apache.bcel.internal.util.ClassSet;
+import octopus.aop.AopHelper;
 import octopus.bean.BeanHelper;
 import octopus.bean.ClassHelper;
 import octopus.bean.IocHelper;
@@ -19,7 +20,8 @@ public final class HelperLoader {
                 ClassHelper.class,
                 BeanHelper.class,
                 IocHelper.class,
-                ControllerHelper.class
+                ControllerHelper.class,
+                AopHelper.class
         };
         for (Class<?> aClass : classList) {
             ClassUtil.loadClass(aClass.getName(), false);
